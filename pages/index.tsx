@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 interface Quote {
@@ -31,23 +30,6 @@ const QuoteWrapper = styled.div`
 const index: NextPage<Props> = ({ data }) => {
 
   const quotes = data.quotes;
-
-  // const [quotes, setQuotes] = useState<Quote[]>([]);
-
-  // const getQuotes = async () => {
-  //   const res = await fetch(`https://dummyjson.com/quotes`);
-  //   return await res.json();
-  // };
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const result: Quotes = await getQuotes();
-  //     console.log(result);
-  //     const data: Quote[] = result.quotes;
-  //     setQuotes(data);
-  //   })();
-  // }, []);
-
   const quotesElem = quotes.map((quote: Quote) => <QuoteWrapper key={quote.id}>
     <p>id : {quote.id}</p>
     <p>quote : {quote.quote}</p>
