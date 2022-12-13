@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
+import { TodoType } from "todo";
 import palette from "../styles/palette";
-import { TodoType } from "../types/todo";
 
 const Container = styled.div`
   width: 100%;

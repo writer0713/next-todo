@@ -1,7 +1,6 @@
 import { NextPage } from "next";
-import styled from "styled-components";
+import { TodoType } from "todo";
 import TodoList from "../components/TodoList";
-import { TodoType } from "../types/todo";
 
 const todos: TodoType[] = [
   { id: 1, text: "todo1", color: "red", checked: false },
