@@ -1,54 +1,21 @@
 import { NextPage } from "next";
 import styled from "styled-components";
+import TodoList from "../components/TodoList";
+import { TodoType } from "../types/todo";
 
-interface Quote {
-  id: number,
-  quote: string,
-  author: string
-}
+const todos: TodoType[] = [
+  { id: 1, text: "todo1", color: "red", checked: false },
+  { id: 2, text: "todo2", color: "orange", checked: false },
+  { id: 3, text: "todo3", color: "yellow", checked: true },
+  { id: 4, text: "todo4", color: "green", checked: true },
+  { id: 5, text: "todo5", color: "blue", checked: false },
+  { id: 6, text: "todo6", color: "navy", checked: false },
+]
 
-interface Quotes {
-  limit: number,
-  quotes: Quote[],
-  skip: number,
-  total: number
-}
-
-interface Props {
-  data: Quotes
-}
-
-const QuoteWrapper = styled.div`
-  max-width: 400px;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: black;
-  color: white;
-`;
-
-const index: NextPage<Props> = ({ data }) => {
-
-  const quotes = data.quotes;
-  const quotesElem = quotes.map((quote: Quote) => <QuoteWrapper key={quote.id}>
-    <p>id : {quote.id}</p>
-    <p>quote : {quote.quote}</p>
-    <p>author : {quote.author}</p>
-  </QuoteWrapper>)
+const index: NextPage = () => {
   return (
-    <>
-      {quotesElem}
-    </>
+    <TodoList todos={todos} />
   );
-}
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://dummyjson.com/quotes`)
-  const data: Quotes = await res.json()
-
-  // Pass data to the page via props
-  return { props: { data } }
 }
 
 export default index;
